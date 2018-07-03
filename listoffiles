@@ -1,0 +1,11 @@
+~/scripts/monitor.sh
+~/scripts/lockscreen.sh
+~/scripts/rick.png
+~/.config/yabar/*
+~/.config/i3/*
+~/.config/rofi/*
+~/.config/ranger/*
+~/.xinitrc
+~/.Xresources
+~/.bashrc
+~/.zshrc

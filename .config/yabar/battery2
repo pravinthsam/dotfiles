@@ -1,0 +1,5 @@
+#!/bin/bash
+
+current_battery=$(cat /sys/class/power_supply/BAT0/energy_now)
+total_battery=$(cat /sys/class/power_supply/BAT0/energy_full)
+echo :$(bc <<< "scale=2; $current_battery*100/$total_battery")%

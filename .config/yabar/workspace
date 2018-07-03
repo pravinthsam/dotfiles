@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+
+import i3ipc
+import sys
+
+i3 = i3ipc.Connection()
+
+def print_workspaces():
+    output = ""
+    symbols_map = {1:'', 2: ''}
+    for workspace in i3.get_workspaces():
+        symbolchar = ''
+        if workspace['num']<=2:
+            symbolchar = ':' + symbols_map[workspace['num']]
+        if workspace['focused']:
+            output += '<span bgcolor="#003388FF"> ' + str(workspace['num']) + symbolchar + ' </span>'
+        else:
+            output += " " + str(workspace['num']) + symbolchar + " "
+    print(output)
+    sys.stdout.flush()	
+
+def on_workspace_focus(self, e):
+    print_workspaces()
+
+print_workspaces()
+i3.on('workspace', on_workspace_focus)
+i3.main()

@@ -1,0 +1,126 @@
+bar-list = [ "top-gap", "bar" ];
+
+top-gap: {
+	block-list: [];
+	position: "top";
+	height: 13;
+	background-color-argb: 0xff000000;
+}
+
+bar: {
+	font: "Ubuntu Mono Bold 10";
+	block-list: [ "left-gap", "workspace", "wifi", "date", "volume", "diskusage", "cpu", "temperature", "battery", "right-gap" ];
+	position: "top";
+	height: 24;
+	background-color-argb: 0xff000000;
+	background-color-nowindow-argb: 0xff000000;
+	underline-size: 2;
+
+	left-gap: {
+		exec: "echo ''"
+		fixed-size: 26;
+		foreground-color-argb: 0x00000000;
+		background-color-argb: 0x00000000;
+		type: "once";
+		align: "left";
+	}
+
+	workspace: {
+		exec: "~/.config/yabar/workspace";	
+		type: "persist";
+		pango-markup: true;
+		#variable-size: true;		
+		fixed-size: 220;		
+		align: "left";
+		foreground-color-rgb: 0xffffff;
+		justify: "left";
+	}
+
+	wifi: {
+		exec: "~/.config/yabar/wifi.sh";
+		internal-prefix: "wifi:";
+                type: "periodic";
+                #interval: 10;
+		#internal-suffix: "";
+		#internal-option1: "wlp9s0";
+		internal-option1: "wifi";
+                foreground-color-rgb: 0xffffaa;
+		align: "left";
+		fixed-size: 200;
+		interval: 5;
+	}
+
+	date: {
+		exec: "date '+%Y-%m-%d %H:%M:%S'";
+		align: "center";
+		fixed-size: 150;
+		type: "periodic";
+		interval: 5;
+		foreground-color-rgb: 0xffffff;
+	}
+
+	volume: {
+		exec: "~/.config/yabar/volume";	
+		align: "right";
+		fixed-size: 60;
+		type: "periodic";
+		interval: 2;
+		foreground-color-rgb: 0xffffff;
+	}
+
+	diskusage:{
+		exec: "YABAR_DISKSPACE";
+		align: "right";
+		fixed-size: 110;
+		interval: 30;
+		internal-prefix: "disk:";
+		# examples for this option:
+		# "/dev/sda1"           first partition of device sda
+		# "/dev/sdb"            all mounted partitions of device sdb
+		# "/dev/mapper/vgc-"    all mounted logical volumes of volume group vgc
+		# "/dev"                all mounted partitions / logical volumes
+		internal-option1: "/dev/sda";
+		foreground-color-rgb: 0xffffff;
+	}
+
+	cpu: {
+		exec: "YABAR_CPU";
+		align: "right";
+		fixed-size: 75;
+		interval: 2;
+		internal-prefix: "cpu:";
+		internal-suffix: "%";
+		foreground-color-rgb: 0xffffff;
+	}
+
+	temperature: {
+		exec: "YABAR_THERMAL";
+		align: "right";
+		fixed-size: 50;
+		interval: 5;
+		foreground-color-rgb: 0xffffff;
+		internal-option1: "thermal_zone0"; # one of /sys/class/thermal/NAME/temp
+		#internal-option2: "70; 0xFFFFFFFF; 0x00000000"; #Critical Temperature, fg, bg
+		#internal-option3: "58; 0xFFFFFFFF; 0x00000000"; #Warning Temperature, fg, bg
+		internal-prefix: "temp:";
+		internal-suffix: "°";
+	}
+
+	battery: {
+		exec: "~/.config/yabar/battery";
+		align: "right";
+		fixed-size: 115;
+		foreground-color-rgb: 0xffffff;
+		type: "periodic";
+		interval: 5;
+	}
+
+	right-gap: {
+		exec: "echo ''"
+		fixed-size: 26;
+		foreground-color-argb:0x00000000;
+		background-color-argb:0x00000000;
+		type: "once";
+		align: "right";
+	}
+}
