@@ -1,6 +1,7 @@
 ~/scripts/monitor.sh
 ~/scripts/lockscreen.sh
 ~/scripts/rick.png
+~/scripts/todo-gist.sh
 ~/.config/yabar/*
 ~/.config/i3/*
 ~/.config/rofi/*
