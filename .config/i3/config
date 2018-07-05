@@ -153,6 +153,9 @@ exec --no-startup-id google-chrome
 #assign [class="URxvt"] $ws2
 #exec urxvt
 exec --no-startup-id i3-msg 'workspace 2; exec urxvt'
+for_window [class="Zenity"] floating enable, move position mouse, move down 20 px
+for_window [class="Pavucontrol"] floating enable, resize set 500 500, move position mouse, move down 20 px
+
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
