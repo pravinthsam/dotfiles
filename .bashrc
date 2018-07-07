@@ -116,8 +116,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# added by Anaconda3 4.4.0 installer
-export PATH="/home/pravinth/anaconda3/bin:$PATH"
+
 export PATH="/usr/local/cuda/bin:$PATH"
 export PATH="/usr/lib:$PATH"
 
@@ -137,3 +136,6 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 alias python-vim='sudo docker run -it --rm -v $(pwd):/src fedeg/python-vim:3'
+
+# added by Miniconda3 installer
+export PATH="/home/pravinth/miniconda3/bin:$PATH"

@@ -1,4 +1,8 @@
-*.font: xft:Hack:size=10, xft:Font Awesome 5 Free Solid:size=10
+#*.font: xft:Droid Sans:size=10, xft:Font Awesome 5 Free Solid:size=10
+#*.font" xft:Droid Sans:size=20
+URxvt.font:     xft:Andale Mono:size=12:antialias=true
+URxvt.boldFont: xft:Andale Mono:bold:size=12:antialias=true
+#URxvt.font: xft:DejaVu Sans Mono:size=16
 
 Xft.dpi:                        96
 Xft.antialias:                  1
