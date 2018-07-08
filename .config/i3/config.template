@@ -135,8 +135,8 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-set $screen1 "eDP-1-1"
-set $screen2 "HDMI-1-2"
+set $screen1 "first_screen"
+set $screen2 "second_screen"
 
 # workspace bindings
 workspace $ws1 output $screen1

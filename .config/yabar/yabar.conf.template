@@ -1,20 +1,14 @@
-bar-list = [ "top-gap", "bar" ];
-
-top-gap: {
-	block-list: [];
-	position: "top";
-	height: 13;
-	background-color-argb: 0xff000000;
-}
+bar-list = [barlist ];
 
 bar: {
-	font: "Ubuntu Mono Bold 10";
-	block-list: [ "left-gap", "workspace", "wifi", "date", "volume", "diskusage", "cpu", "temperature", "battery", "right-gap" ];
+	font: "monospace 10";
+	block-list: [ "left-gap", "todo", "workspace", "wifi", "date", "volume", "diskusage", "cpu", "mem", "temperature", "battery", "right-gap" ];
 	position: "top";
 	height: 24;
 	background-color-argb: 0xff000000;
 	background-color-nowindow-argb: 0xff000000;
 	underline-size: 2;
+        monitor: "first_screen"
 
 	left-gap: {
 		exec: "echo ''"
@@ -25,15 +19,26 @@ bar: {
 		align: "left";
 	}
 
+        todo: {
+                exec: "echo ''"
+                fixed-size: 26;
+                foreground-color-argb: 0x00000000;
+                background-color-argb: 0x00000000;
+                type: "once";
+                align: "left";
+                command-button1: "~/scripts/todo-gist.sh"
+        }
+
 	workspace: {
 		exec: "~/.config/yabar/workspace";	
 		type: "persist";
 		pango-markup: true;
 		#variable-size: true;		
-		fixed-size: 220;		
+		fixed-size: 150;		
 		align: "left";
 		foreground-color-rgb: 0xffffff;
 		justify: "left";
+                command-button1: "notify-send hello";
 	}
 
 	wifi: {
@@ -44,19 +49,20 @@ bar: {
 		#internal-suffix: "";
 		#internal-option1: "wlp9s0";
 		internal-option1: "wifi";
-                foreground-color-rgb: 0xffffaa;
+                foreground-color-rgb: 0xffffff;
 		align: "left";
 		fixed-size: 200;
 		interval: 5;
 	}
 
 	date: {
-		exec: "date '+%Y-%m-%d %H:%M:%S'";
+		exec: "date '+%Y-%m-%d %H:%M'";
 		align: "center";
-		fixed-size: 150;
+		fixed-size: 200;
 		type: "periodic";
 		interval: 5;
 		foreground-color-rgb: 0xffffff;
+                command-button1: "if ! pgrep -x \"zenity\" > /dev/null; then zenity --calendar; fi";
 	}
 
 	volume: {
@@ -66,14 +72,16 @@ bar: {
 		type: "periodic";
 		interval: 2;
 		foreground-color-rgb: 0xffffff;
+        command-button1: "pavucontrol";
+        command-button3: "urxvt +tr -bg black -name ncurses-volume -e python ~/.config/yabar/ncurses-volume.py";
 	}
 
 	diskusage:{
 		exec: "YABAR_DISKSPACE";
 		align: "right";
-		fixed-size: 110;
+		fixed-size: 150;
 		interval: 30;
-		internal-prefix: "disk:";
+		internal-prefix: ":";
 		# examples for this option:
 		# "/dev/sda1"           first partition of device sda
 		# "/dev/sdb"            all mounted partitions of device sdb
@@ -81,14 +89,24 @@ bar: {
 		# "/dev"                all mounted partitions / logical volumes
 		internal-option1: "/dev/sda";
 		foreground-color-rgb: 0xffffff;
+		command-button3: "urxvt +tr -bg black -name ncurses-disk -e sh -c 'df -h; sleep 5'";
 	}
+
+        mem: {
+                exec: "YABAR_MEMORY";
+                align: "right";
+                fixed-size: 75;
+                interval: 2;
+                internal-prefix: ":";
+                foreground-color-rgb: 0xffffff;
+        }
 
 	cpu: {
 		exec: "YABAR_CPU";
 		align: "right";
 		fixed-size: 75;
 		interval: 2;
-		internal-prefix: "cpu:";
+		internal-prefix: ":";
 		internal-suffix: "%";
 		foreground-color-rgb: 0xffffff;
 	}
@@ -96,21 +114,22 @@ bar: {
 	temperature: {
 		exec: "YABAR_THERMAL";
 		align: "right";
-		fixed-size: 50;
+		fixed-size: 100;
 		interval: 5;
 		foreground-color-rgb: 0xffffff;
 		internal-option1: "thermal_zone0"; # one of /sys/class/thermal/NAME/temp
 		#internal-option2: "70; 0xFFFFFFFF; 0x00000000"; #Critical Temperature, fg, bg
 		#internal-option3: "58; 0xFFFFFFFF; 0x00000000"; #Warning Temperature, fg, bg
-		internal-prefix: "temp:";
+		internal-prefix: ":";
 		internal-suffix: "°";
 	}
 
 	battery: {
-		exec: "~/.config/yabar/battery";
+		exec: "~/.config/yabar/battery2";
 		align: "right";
 		fixed-size: 115;
 		foreground-color-rgb: 0xffffff;
+                #internal-prefix: ":";
 		type: "periodic";
 		interval: 5;
 	}
@@ -124,3 +143,8 @@ bar: {
 		align: "right";
 	}
 }
+
+commentcharbar2: {
+commentchar    inherit-all: "bar";
+commentchar    monitor: "second_screen"
+commentchar}

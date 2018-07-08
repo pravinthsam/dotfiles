@@ -1,4 +1,5 @@
 xrandr --auto
+~/scripts/screens.sh
 
 xrdb ~/.Xresources
 
