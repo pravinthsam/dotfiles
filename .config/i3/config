@@ -210,7 +210,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Rick and Morty lockscreen
-exec xautolock -time 15 -locker '/home/pravinth/scripts/lockscreen.sh' &
+exec xautolock -time 10 -locker '/home/pravinth/scripts/lockscreen.sh' &
 bindsym $mod+Shift+p exec /home/pravinth/scripts/lockscreen.sh
 
 exec_always --no-startup-id pkill yabar; yabar
