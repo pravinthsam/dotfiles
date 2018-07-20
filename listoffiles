@@ -2,6 +2,7 @@
 ~/scripts/lockscreen.sh
 ~/scripts/rick.png
 ~/scripts/todo-gist.sh
+~/scripts/finder.sh
 ~/.config/yabar/*
 ~/.config/i3/*
 ~/.config/rofi/*

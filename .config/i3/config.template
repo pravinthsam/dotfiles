@@ -44,6 +44,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 bindsym $mod+d exec rofi -show combi -theme ~/.config/rofi/customtheme.rasi
+bindsym $mod+Shift+f exec rofi -show find -modi find:~/scripts/finder.sh
 
 # change focus
 bindsym $mod+j focus left
