@@ -3,6 +3,7 @@
 ~/scripts/rick.png
 ~/scripts/todo-gist.sh
 ~/scripts/finder.sh
+~/scripts/notify-battery-low.sh
 ~/.config/yabar/*
 ~/.config/i3/*
 ~/.config/rofi/*
