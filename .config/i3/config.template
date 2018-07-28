@@ -165,6 +165,7 @@ for_window [class="Pavucontrol"] floating enable, resize set 500 500, move posit
 for_window [class="Gedit" title=".*todo-gist.*"] floating enable, resize set 500 500, move position mouse, move down 20 px
 for_window [instance="ncurses-volume"] floating enable, resize set 70 300, move position mouse, move down 10 px
 for_window [instance="ncurses-disk"] floating enable, resize set 600 500, move position mouse, move down 10 px
+for_window [instance="ncurses-gmail"] floating enable, resize set 1000 300, move position mouse, move down 10 px
 
 # reload the configuration file
 bindsym $mod+Shift+c exec ~/scripts/screens.sh, reload

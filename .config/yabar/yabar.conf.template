@@ -2,7 +2,7 @@ bar-list = [barlist ];
 
 bar: {
 	font: "monospace 10";
-	block-list: [ "left-gap", "todo", "workspace", "wifi", "date", "volume", "diskusage", "cpu", "mem", "temperature", "battery", "right-gap" ];
+	block-list: [ "left-gap", "todo", "workspace", "wifi", "date", "mail", "volume", "diskusage", "cpu", "mem", "temperature", "battery", "right-gap" ];
 	position: "top";
 	height: 24;
 	background-color-argb: 0xff000000;
@@ -64,7 +64,17 @@ bar: {
 		foreground-color-rgb: 0xffffff;
                 command-button1: "if ! pgrep -x \"zenity\" > /dev/null; then zenity --calendar; fi";
 	}
-
+	
+	mail: {
+		exec: "cd ~/.config/yabar/ && ~/miniconda3/envs/gmailcheck/bin/python ~/.config/yabar/gmail.py unread | sed -e 's/^/:/'";
+		align: "right";
+		fixed-size: 50;
+		foreground-color-rgb: 0xffffff;
+		type: "periodic";
+		interval: 120;
+		command-button3: "urxvt +tr -bg black -name ncurses-gmail -e sh -c 'cd ~/.config/yabar/; ~/miniconda3/envs/gmailcheck/bin/python ~/.config/yabar/gmail.py inbox; sleep 5'";
+	}
+	
 	volume: {
 		exec: "~/.config/yabar/volume";	
 		align: "right";
@@ -133,6 +143,8 @@ bar: {
 		type: "periodic";
 		interval: 5;
 	}
+	
+
 
 	right-gap: {
 		exec: "echo ''"

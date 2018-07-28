@@ -32,3 +32,10 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 alias python-vim='sudo docker run -it --rm -v $(pwd):/src fedeg/python-vim:3'
 # added by Miniconda3 installer
 export PATH="/home/pravinth/miniconda3/bin:$PATH"
+
+# Make a folder and cd into it
+mkcd () {
+  mkdir "$1"
+  cd "$1"
+}
+. /home/pravinth/miniconda3/etc/profile.d/conda.sh
